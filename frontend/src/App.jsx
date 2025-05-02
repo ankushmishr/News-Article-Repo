@@ -1,12 +1,26 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
+import { BrowserRouter, Routes ,Route } from 'react-router-dom'
+// import { Route } from 'lucide-react'
+import SignInForm from './auth/forms/SignInForm'
+import SignUpForm from './auth/forms/SignUpForm'
+import Home from './pages/Home'
+import DashBoard from './pages/DashBoard'
+import NewsArticles from './pages/NewsArticles'
+import About from './pages/About'
 const App = () => {
   return (
     <>
-     <h1 className="text-5xl font-bold underline text-red-500">
-      Hello world!
-    </h1>
-    <Button className="bg-red-300" variant="ghost">Click me</Button>
+    <BrowserRouter>
+    <Routes>
+      <Route path='sign-in' element={<SignInForm/>}/>
+      <Route path='sign-up' element={<SignUpForm/>}/>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/dashboard' element={<DashBoard/>}/>
+      <Route path='/news' element={<NewsArticles/>}/>
+      <Route path='/about' element={<About/>}/>
+    </Routes>
+    </BrowserRouter>
     </>
   )
 }

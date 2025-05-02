@@ -8,10 +8,12 @@ import Home from './pages/Home'
 import DashBoard from './pages/DashBoard'
 import NewsArticles from './pages/NewsArticles'
 import About from './pages/About'
+import Header from './components/shared/Header'
 const App = () => {
   return (
     <>
     <BrowserRouter>
+    <Header/>
     <Routes>
       <Route path='sign-in' element={<SignInForm/>}/>
       <Route path='sign-up' element={<SignUpForm/>}/>

@@ -1,19 +1,28 @@
 import bcryptjs from "bcryptjs"
 import User from "../models/User.model.js"
-export const signup = async (req, res) => {
-    const { username, email, password } = req.body||{}
-    if (!username ||  !email || !password || username === "" || email === "" || password === "") {
-        return res.status(400).json({ message: "All folders are required" })
+// import { errorHandler } from "../utils/error.js"
+// import  {errorHandler} from "../utils/error.js"
+import  {errorHandler} from "../utils/Error.js"
+export const signup = async (req, res , next) => {
+    const { username, email, password } = req.body || {}
+
+    // ✅ Add return here to stop further execution if validation fails
+    if (!username || !email || !password || username === "" || email === "" || password === "") {
+       return next(errorHandler(400, "All fields are required"));
     }
-    const hashedPassword = bcryptjs.hashSync
+
+    const hashedPassword = bcryptjs.hashSync(password, 10);
+
     const newUser = new User({
-        username, email, password: hashedPassword,
-    })
+        username,
+        email,
+        password: hashedPassword,
+    });
+
     try {
-        await newUser.save()
-        res.status(200).json("SignUp Sucessfull")
+        await newUser.save();
+        res.status(200).json("SignUp Successful");
     } catch (error) {
-        res.status(500).json({message:error.message})
-        
+        next(error);
     }
-}
+};

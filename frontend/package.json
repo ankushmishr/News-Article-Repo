@@ -17,7 +17,7 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.2.0",
-    "@radix-ui/react-toast": "^1.2.2",
+    "@radix-ui/react-toast": "^1.2.13",
     "@reduxjs/toolkit": "^2.3.0",
     "@vitejs/plugin-react": "^4.4.1",
     "appwrite": "^14.0.1",
